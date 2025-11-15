@@ -7,7 +7,7 @@ export class MeteoraMock {
   private basePrice = 100;
 
   async getQuote(tokenIn: string, tokenOut: string, amount: number): Promise<Quote> {
-    await sleep(200);
+    await sleep(2000);
 
     const variance = 0.97 + Math.random() * 0.05;
     const price = this.basePrice * variance * amount;

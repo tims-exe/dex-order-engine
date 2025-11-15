@@ -7,7 +7,7 @@ export class RaydiumMock {
   private basePrice = 100; 
 
   async getQuote(tokenIn: string, tokenOut: string, amount: number): Promise<Quote> {
-    await sleep(200);
+    await sleep(2000);
 
     const variance = 0.98 + Math.random() * 0.04;
     const price = this.basePrice * variance * amount;

@@ -43,6 +43,9 @@ export async function processOrder(orderData: OrderData, redis: Redis) {
     try {
       attempt++;
 
+
+      await sleep(3000)
+
       // status : routing
       await publishStatus(
         redis,
@@ -64,7 +67,7 @@ export async function processOrder(orderData: OrderData, redis: Redis) {
         { selectedDex: bestRoute.dex }
       );
 
-      await sleep(500);
+      await sleep(3000);
 
       // status : submitted
       await publishStatus(
@@ -73,6 +76,8 @@ export async function processOrder(orderData: OrderData, redis: Redis) {
         'submitted',
         'Transaction sent to network'
       );
+
+      await sleep(3000);
 
       const result = await handler.executeSwap(bestRoute.dex, {
         tokenIn,

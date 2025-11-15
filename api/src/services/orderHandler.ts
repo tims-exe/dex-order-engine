@@ -22,21 +22,10 @@ export async function handleOrder(orderId: string, connection: WebSocket, prisma
         return;
     }
 
-    connection.send(
-        JSON.stringify({
-            orderId: order.id,
-            status: order.status,
-            message: 'Order received and queued',
-        })
-    );
-
-    await orderQueue.add('execute-order', { 
-        orderId: order.id, 
-        tokenIn: order.tokenIn,
-        tokenOut: order.tokenOut,
-        amount: order.amount,
-        orderType: order.orderType,
-    });
+    if (order.status === "confirmed") {
+        console.log(`[${order.id}] => Status : ${order.status}`);
+        connection.close();
+    }
 
     const channel = `order:${order.id}`;
     await redisSub.subscribe(channel);

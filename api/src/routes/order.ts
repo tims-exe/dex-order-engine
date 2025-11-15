@@ -42,6 +42,14 @@ const orderRoutes: FastifyPluginAsync<RouteType> = async (fastify, opts) => {
       },
     });
 
+    await orderQueue.add('execute-order', { 
+        orderId: order.id, 
+        tokenIn: order.tokenIn,
+        tokenOut: order.tokenOut,
+        amount: order.amount,
+        orderType: order.orderType,
+    });
+
     return response.send({ 
       orderId: order.id 
     });
