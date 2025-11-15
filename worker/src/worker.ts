@@ -1,5 +1,6 @@
 import { Worker } from 'bullmq';
 import Redis from 'ioredis';
+import { processOrder } from './orderProcessor';
 
 const redis = new Redis({
   host: process.env.REDIS_HOST || 'localhost',
@@ -11,7 +12,7 @@ const worker = new Worker(
   'order-execution',
   async (job) => {
     console.log(`Processing order: ${job.data.orderId}`);
-    // process order
+    await processOrder(job.data, redis);
   },
   {
     connection: redis,

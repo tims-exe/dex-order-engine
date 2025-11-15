@@ -1,21 +1,5 @@
 import { randomBytes } from 'crypto';
-
-interface Quote {
-  dex: string;
-  price: number;
-  fee: number;
-}
-
-interface SwapParams {
-  tokenIn: string;
-  tokenOut: string;
-  amount: number;
-}
-
-interface SwapResult {
-  txHash: string;
-  executedPrice: number;
-}
+import { Quote, SwapParams, SwapResult } from '../../types/mock';
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
