@@ -1,6 +1,5 @@
 generator client {
     provider = "prisma-client-js"
-    output   = "../node_modules/@prisma/client"
 }
 
 datasource db {
@@ -8,7 +7,7 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
-model Order {
+model Orders {
     id            String   @id @default(uuid())
     tokenIn       String
     tokenOut      String
