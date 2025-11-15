@@ -1,1 +1,1 @@
-{"root":["./src/orderprocessor.ts","./src/worker.ts","./src/services/dexhandler.ts","./src/services/mock/meteoramock.ts","./src/services/mock/raydiummock.ts"],"version":"5.8.3"}
+{"root":["./src/orderprocessor.ts","./src/worker.ts","./src/services/dexhandler.ts","./src/services/mock/meteoramock.ts","./src/services/mock/raydiummock.ts","./src/types/mock.ts"],"version":"5.8.3"}
