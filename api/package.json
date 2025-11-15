@@ -14,10 +14,13 @@
   "type": "commonjs",
   "dependencies": {
     "@fastify/websocket": "^10.0.1",
-    "@prisma/client": "^5.22.0",
     "@types/node": "^24.10.1",
+    "@types/ws": "^8.18.1",
     "bullmq": "^5.63.2",
+    "db": "file:../db",
     "fastify": "^4.29.1",
-    "ioredis": "^5.8.2"
+    "ioredis": "^5.8.2",
+    "ws": "^8.18.3",
+    "zod": "^4.1.12"
   }
 }
