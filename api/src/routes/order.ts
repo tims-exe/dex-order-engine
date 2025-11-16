@@ -42,6 +42,8 @@ const orderRoutes: FastifyPluginAsync<RouteType> = async (fastify, opts) => {
       },
     });
 
+    console.log(`Executing order : ${order.id}`)
+
     await orderQueue.add('execute-order', { 
         orderId: order.id, 
         tokenIn: order.tokenIn,
