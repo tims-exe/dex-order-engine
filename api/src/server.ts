@@ -7,21 +7,12 @@ import { prisma } from 'db';
 
 const fastify = Fastify()
 
-const redis = new Redis({
-  host: process.env.REDIS_HOST || 'localhost',
-  port: Number(process.env.REDIS_PORT) || 6379,
-});
-
-const redisSub = new Redis({
-  host: process.env.REDIS_HOST || 'localhost',
-  port: Number(process.env.REDIS_PORT) || 6379,
-});
+const redis = new Redis(process.env.REDIS_URL!);
+const redisSub = new Redis(process.env.REDIS_URL!);
 
 const orderQueue = new Queue('order-execution', {
-  connection: redis,
+  connection: new Redis(process.env.REDIS_URL!)
 });
-
-
 
 
 fastify.register(websocket);
